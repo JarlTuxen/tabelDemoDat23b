@@ -12,7 +12,7 @@ public class ProductRepository {
     public List<Product> getAll(){
         List<Product> products = new ArrayList<>();
 
-        //lav testdata og sæt i productliste
+        //lav testdata og sæt i productliste - genereret med ChatGpt
         products.add(new Product(1, "The Witcher 3: Wild Hunt", "Action RPG", 59.99));
         products.add(new Product(2, "Grand Theft Auto V", "Action-Adventure", 29.99));
         products.add(new Product(3, "The Legend of Zelda: Breath of the Wild", "Action-Adventure", 49.99));
