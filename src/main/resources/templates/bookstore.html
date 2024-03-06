@@ -15,14 +15,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>
+            <!-- iterer over products og lave en række for hvert product -->
+            <tr th:each="vare : ${varer}">
+                <td th:text="${vare.name}">
                     Angry Birds
                 </td>
-                <td>
+                <td th:text="${vare.genre}">
                     Mobil spil
                 </td>
-                <td>
+                <td th:text="${vare.price}">
                     0
                 </td>
             </tr>
