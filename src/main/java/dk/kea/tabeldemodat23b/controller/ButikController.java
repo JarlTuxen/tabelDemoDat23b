@@ -15,6 +15,11 @@ public class ButikController {
     @Autowired
     ProductRepository productRepository;
 
+    @GetMapping("/")
+    public String index(){
+        return "redirect:/boghandel";
+    }
+
     @GetMapping("/boghandel")
     public String visVareliste(Model model){
 

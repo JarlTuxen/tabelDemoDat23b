@@ -1,6 +1,9 @@
 package dk.kea.tabeldemodat23b.repository;
 
 import dk.kea.tabeldemodat23b.model.Product;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -9,7 +12,17 @@ import java.util.List;
 @Repository
 public class ProductRepository {
 
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
+
     public List<Product> getAll(){
+        String sql = "select * from products";
+        List<Product> products = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Product.class));
+
+        return products;
+    }
+
+    public List<Product> getAllDefault(){
         List<Product> products = new ArrayList<>();
 
         //lav testdata og sæt i productliste - genereret med ChatGpt
