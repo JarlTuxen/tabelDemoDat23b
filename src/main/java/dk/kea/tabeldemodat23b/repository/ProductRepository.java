@@ -22,6 +22,14 @@ public class ProductRepository {
         return products;
     }
 
+    public double sumPrice(){
+        final String sql = "SELECT SUM(price) FROM products";
+        //brug queryForObject, når det er en værdi, der skal tilbage
+        //angiv typen der kommer retur
+        double sum = jdbcTemplate.queryForObject(sql, Double.class);
+        return sum;
+    }
+
     public List<Product> getAllDefault(){
         List<Product> products = new ArrayList<>();
 

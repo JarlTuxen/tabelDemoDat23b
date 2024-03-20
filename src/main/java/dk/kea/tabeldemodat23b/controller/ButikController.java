@@ -28,6 +28,7 @@ public class ButikController {
 
         //tilføj varer til view model
         model.addAttribute("varer", products);
+        model.addAttribute("sum", productRepository.sumPrice());
         return "bookstore";
     }
 
