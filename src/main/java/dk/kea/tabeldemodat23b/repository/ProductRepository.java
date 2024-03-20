@@ -22,6 +22,7 @@ public class ProductRepository {
         return products;
     }
 
+    //udregn pris, hvis alle produkter købes
     public double sumPrice(){
         final String sql = "SELECT SUM(price) FROM products";
         //brug queryForObject, når det er en værdi, der skal tilbage
