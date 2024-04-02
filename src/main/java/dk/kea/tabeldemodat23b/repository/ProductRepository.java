@@ -48,4 +48,9 @@ public class ProductRepository {
 
         return products;
     }
+
+    public void create(Product product) {
+        final String INSERT_SQL ="INSERT INTO products (name, genre, price) VALUES (?, ?, ?)";
+        jdbcTemplate.update(INSERT_SQL, product.getName(), product.getGenre(), product.getPrice());
+    }
 }

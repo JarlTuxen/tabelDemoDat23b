@@ -17,6 +17,12 @@ public class Product {
         this.price = price;
     }
 
+    public Product(String name, String genre, double price) {
+        this.name = name;
+        this.genre = genre;
+        this.price = price;
+    }
+
     public int getId() {
         return id;
     }

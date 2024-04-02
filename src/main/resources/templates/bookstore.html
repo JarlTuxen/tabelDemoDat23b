@@ -29,9 +29,14 @@
             </tr>
         </tbody>
     </table>
+
     <div>
         <!-- vis statistik -->
         <p>Total for alle spil: <span th:text="${sum}">42</span></p>
+    </div>
+    <div>
+        <h2>Opret nyt spil</h2>
+        <a href="create.html" th:href="@{/create}">Klik for at oprette nyt spil</a>
     </div>
 </body>
 </html>
