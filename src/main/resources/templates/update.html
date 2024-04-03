@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Opdater</title>
+</head>
+<body>
+
+<h1>Opdater spil</h1>
+
+<form action="/update" method="post">
+
+    <input name="id" type="number" hidden th:value="${vare.id}">
+
+    <label for="name-field">Navn</label>
+    <input id="name-field" name="name" type="text" th:value="${vare.name}">
+
+    <label for="genre-field">Genre</label>
+    <input id="genre-field" name="genre" type="text" th:value="${vare.genre}">
+
+    <label for="price-field">Price</label>
+    <input id="price-field" name="price" type="number" th:value="${vare.price}">
+
+    <input type="submit" value="Opdater spil">
+
+</form>
+
+</body>
+</html>

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -54,4 +55,40 @@ public class ButikController {
         return "redirect:/";
     }
 
+    @GetMapping("/delete/{id}")
+    public String deleteProduct(@PathVariable("id") int deleteId){
+        //slet i repository
+        productRepository.deleteById(deleteId);
+        //redirect til liste
+        return "redirect:/";
+    }
+
+    @GetMapping("/update/{id}")
+    public String showUpdate(@PathVariable("id") int updateId, Model model){
+        //find product i database
+        Product product = productRepository.findById(updateId);
+
+        //tilføj product til view model
+        model.addAttribute("vare", product);
+
+        //vis update-side
+        return "update";
+    }
+
+    @PostMapping("/update")
+    public String updateProduct(
+                @RequestParam("id") int id,
+                @RequestParam("name") String navn,
+                @RequestParam("genre") String genre,
+                @RequestParam("price") double price
+                ){
+        //lave product
+        Product product = new Product(id, navn, genre, price);
+
+        //opdater repository
+        productRepository.update(product);
+
+        //vis liste
+        return "redirect:/";
+    }
 }

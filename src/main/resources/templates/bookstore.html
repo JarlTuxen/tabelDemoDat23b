@@ -12,6 +12,8 @@
                 <th>Navn</th>
                 <th>Genre</th>
                 <th>Pris</th>
+                <th>Opdater</th>
+                <th>Slet</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +27,12 @@
                 </td>
                 <td th:text="${vare.price}">
                     0
+                </td>
+                <td>
+                    <a th:href="@{'/update/' + ${vare.id}}" href="update.html">Opdater</a>
+                </td>
+                <td>
+                    <a th:href="@{'/delete/' + ${vare.id}}" href="bookstore.html">Slet</a>
                 </td>
             </tr>
         </tbody>

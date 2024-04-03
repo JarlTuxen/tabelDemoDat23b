@@ -4,6 +4,7 @@ import dk.kea.tabeldemodat23b.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -52,5 +53,30 @@ public class ProductRepository {
     public void create(Product product) {
         final String INSERT_SQL ="INSERT INTO products (name, genre, price) VALUES (?, ?, ?)";
         jdbcTemplate.update(INSERT_SQL, product.getName(), product.getGenre(), product.getPrice());
+    }
+
+    public void deleteById(int deleteId){
+        //slette sql
+        final String DELETE_BY_ID_SQL = "DELETE FROM products WHERE id = ?";
+        //kald af JdbcTemplate med sql og paramter
+        jdbcTemplate.update(DELETE_BY_ID_SQL, deleteId);
+    }
+
+    public Product findById(int updateId) {
+        //find SQL
+        final String FIND_BY_ID_SQL = "SELECT * FROM products WHERE id = ?";
+
+        //definer rowmapper som omsætter databaserække til product
+        RowMapper<Product> rowMapper = new BeanPropertyRowMapper<>(Product.class);
+
+        //returner query-resultat fra JdbcTemplate
+        return jdbcTemplate.queryForObject(FIND_BY_ID_SQL, rowMapper, updateId);
+    }
+
+    public void update(Product product) {
+        //update sql
+        final String UPDATE_SQL = "UPDATE products SET name = ?, genre = ?, price = ? WHERE id = ?";
+        //update db vha. JdbcTemplate
+        jdbcTemplate.update(UPDATE_SQL, product.getName(), product.getGenre(), product.getPrice(), product.getId());
     }
 }
